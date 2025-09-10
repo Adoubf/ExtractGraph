@@ -1,0 +1,17 @@
+Data Comparison Statistics
+==================================================
+
+Title: Strategy: literary
+Total Nodes: 11
+Total Relationships: 5
+Node Types: {'CHARACTER': 6, 'EMOTION': 5}
+Relationship Types: {'MEETS': 2, 'INFLUENCES': 2, 'REPRESENTS': 1}
+Unique Documents: 1
+------------------------------
+Title: Strategy: business
+Total Nodes: 20
+Total Relationships: 7
+Node Types: {'PERSON': 7, 'ORGANIZATION': 2, 'ATTRIBUTES': 7, 'WORKS_FOR': 2, 'COMMUNICATES_WITH': 2}
+Relationship Types: {'WORKS_FOR': 3, 'MEETS': 2, 'COMMUNICATES_WITH': 2}
+Unique Documents: 1
+------------------------------

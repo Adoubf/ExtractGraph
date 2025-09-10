@@ -1,0 +1,100 @@
+# 学术文本提取策略配置
+name: "academic"
+description: "专门用于学术文本的信息提取配置"
+version: "1.0"
+
+# 支持的实体类型
+entities:
+  - researcher
+  - concept
+  - methodology
+  - finding
+  - organization
+
+# 支持的关系类型
+relations:
+  - researches
+  - builds_on
+  - validates
+  - contradicts
+  - collaborates_with
+  - works_for
+
+# 精细度配置
+granularity:
+  breadth: "comprehensive"     # 学术文本需要全面提取
+  depth: "inferential"        # 推理层面分析
+  confidence: "medium"        # 中等置信度，允许推理
+  context_scope: "document"   # 文档级别上下文
+
+# 提取规则
+extraction_rules:
+  entity_rules:
+    researcher:
+      - "提取研究人员姓名和身份"
+      - "识别作者、引用的学者"
+      - "包含学术职位和机构信息"
+    
+    concept:
+      - "提取学术概念和理论"
+      - "识别专业术语和定义"
+      - "包含核心思想和原理"
+    
+    methodology:
+      - "提取研究方法和技术"
+      - "识别实验设计和分析方法"
+      - "包含数据收集和处理方式"
+    
+    finding:
+      - "提取研究发现和结论"
+      - "识别实验结果和观察"
+      - "包含统计数据和证据"
+    
+    organization:
+      - "提取研究机构和大学"
+      - "识别实验室和研究中心"
+      - "包含资助机构"
+  
+  relation_rules:
+    researches:
+      - "识别研究人员的研究领域"
+      - "包含研究方向和专长"
+    
+    builds_on:
+      - "识别理论建构和扩展关系"
+      - "包含引用和发展关系"
+    
+    validates:
+      - "识别验证和确认关系"
+      - "包含实证支持"
+    
+    contradicts:
+      - "识别矛盾和反驳关系"
+      - "包含争议和辩论"
+    
+    collaborates_with:
+      - "识别合作研究关系"
+      - "包含共同作者和项目合作"
+
+# 提示词模板配置
+prompt_template: "detailed"
+
+# Few-shot示例配置
+examples:
+  use_domain_specific: true
+  max_examples: 4
+  example_selection: "diverse"
+
+# 后处理配置
+post_processing:
+  merge_similar_entities: true
+  resolve_coreferences: true
+  filter_low_confidence: false  # 学术文本保留更多可能性
+  normalize_citations: true
+
+# 特殊配置  
+special_settings:
+  recognize_academic_terms: true
+  handle_citations: true
+  extract_statistical_data: true
+  preserve_technical_language: true

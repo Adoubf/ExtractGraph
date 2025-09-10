@@ -1,0 +1,148 @@
+# 实体类型定义配置
+# 支持不同领域的实体类型和属性定义
+
+# 通用实体类型
+common:
+  character:
+    description: "人物或角色"
+    attributes:
+      - role          # 角色类型
+      - alias         # 别名
+      - title         # 称谓
+      - status        # 状态
+  
+  emotion:
+    description: "情感表达或情绪线索"
+    attributes:
+      - feeling       # 具体情感
+      - category      # 情感类别
+      - intensity     # 强度
+  
+  location:
+    description: "地点或场所"
+    attributes:
+      - type          # 地点类型
+      - description   # 描述
+
+# 文学领域实体
+literary:
+  character:
+    description: "文学作品中的人物"
+    attributes:
+      - role          # 主角/配角/次要角色
+      - alias         # 别名或绰号
+      - title         # 贵族称谓等
+      - relationship  # 人物关系
+  
+  emotion:
+    description: "情感表达和情绪描述"
+    attributes:
+      - feeling       # 具体情感(joy, sorrow, anger, etc.)
+      - category      # 情感类别(positive, negative, neutral)
+      - intensity     # 强度(mild, moderate, intense)
+      - expression    # 表达方式(direct, implied, metaphorical)
+  
+  theme:
+    description: "文学主题和象征"
+    attributes:
+      - category      # 主题类别
+      - significance  # 意义
+      - context       # 上下文
+  
+  symbol:
+    description: "象征性元素"
+    attributes:
+      - represents    # 象征意义
+      - type          # 象征类型
+      - context       # 使用上下文
+
+# 商业领域实体
+business:
+  organization:
+    description: "组织或公司"
+    attributes:
+      - type          # 公司类型
+      - sector        # 行业
+      - role          # 在文档中的角色
+  
+  person:
+    description: "商业人员"
+    attributes:
+      - position      # 职位
+      - department    # 部门
+      - role          # 角色
+  
+  product:
+    description: "产品或服务"
+    attributes:
+      - category      # 产品类别
+      - status        # 状态
+      - features      # 特性
+  
+  financial:
+    description: "财务相关信息"
+    attributes:
+      - type          # 财务类型
+      - amount        # 金额
+      - currency      # 货币
+      - period        # 时间期间
+
+# 新闻领域实体  
+news:
+  person:
+    description: "新闻人物"
+    attributes:
+      - role          # 在事件中的角色
+      - affiliation   # 所属机构
+      - title         # 职务
+  
+  organization:
+    description: "新闻中的组织"
+    attributes:
+      - type          # 组织类型
+      - sector        # 领域
+      - location      # 位置
+  
+  event:
+    description: "新闻事件"
+    attributes:
+      - type          # 事件类型
+      - significance  # 重要性
+      - impact        # 影响范围
+  
+  location:
+    description: "地理位置"
+    attributes:
+      - type          # 地点类型
+      - country       # 国家
+      - region        # 地区
+
+# 学术领域实体
+academic:
+  researcher:
+    description: "研究人员"
+    attributes:
+      - affiliation   # 所属机构
+      - field         # 研究领域
+      - role          # 角色
+  
+  concept:
+    description: "学术概念"
+    attributes:
+      - field         # 学科领域
+      - definition    # 定义
+      - importance    # 重要性
+  
+  methodology:
+    description: "研究方法"
+    attributes:
+      - type          # 方法类型
+      - application   # 应用场景
+      - validity      # 有效性
+  
+  finding:
+    description: "研究发现"
+    attributes:
+      - significance  # 重要性
+      - evidence      # 证据强度
+      - implication   # 含义

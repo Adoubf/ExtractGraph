@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1>Comparison 1: Strategy: literary</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1>Comparison 1: Strategy: literary</h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": 2, "borderWidthSelected": 3, "chosen": true, "color": "#3498db", "font": {"color": "#000000"}, "id": "character_e211f12d5271feee", "label": "\u738b\u8001\u5e08", "shape": "dot", "size": 25, "title": "\u003cb\u003eID:\u003c/b\u003e character_e211f12d5271feee\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e CHARACTER\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u738b\u8001\u5e08\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_ec56ebc5\u003cbr\u003e\u003cb\u003eRole:\u003c/b\u003e teacher\u003cbr\u003e\u003cb\u003eTitle:\u003c/b\u003e \u8001\u5e08"}, {"borderWidth": 2, "borderWidthSelected": 3, "chosen": true, "color": "#3498db", "font": {"color": "#000000"}, "id": "character_d9ed8d8791850f71", "label": "\u5b66\u751f\u4eec", "shape": "dot", "size": 25, "title": "\u003cb\u003eID:\u003c/b\u003e character_d9ed8d8791850f71\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e CHARACTER\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u5b66\u751f\u4eec\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_ec56ebc5\u003cbr\u003e\u003cb\u003eRole:\u003c/b\u003e group"}, {"borderWidth": 2, "borderWidthSelected": 3, "chosen": true, "color": "#e74c3c", "font": {"color": "#000000"}, "id": "emotion_d6560031a6a6b63c", "label": "\u90fd\u5f88\u559c\u6b22", "shape": "triangle", "size": 20, "title": "\u003cb\u003eID:\u003c/b\u003e emotion_d6560031a6a6b63c\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e EMOTION\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u90fd\u5f88\u559c\u6b22\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_ec56ebc5\u003cbr\u003e\u003cb\u003eFeeling:\u003c/b\u003e affection"}, {"borderWidth": 2, "borderWidthSelected": 3, "chosen": true, "color": "#3498db", "font": {"color": "#000000"}, "id": "character_11a9fbcd06dc47b5", "label": "\u5c0f\u534e", "shape": "dot", "size": 25, "title": "\u003cb\u003eID:\u003c/b\u003e character_11a9fbcd06dc47b5\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e CHARACTER\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u5c0f\u534e\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_ec56ebc5\u003cbr\u003e\u003cb\u003eRole:\u003c/b\u003e student"}, {"borderWidth": 2, "borderWidthSelected": 3, "chosen": true, "color": "#e74c3c", "font": {"color": "#000000"}, "id": "emotion_9737f6879693e1c4", "label": "\u5f88\u6709\u70ed\u60c5", "shape": "triangle", "size": 20, "title": "\u003cb\u003eID:\u003c/b\u003e emotion_9737f6879693e1c4\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e EMOTION\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u5f88\u6709\u70ed\u60c5\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_ec56ebc5\u003cbr\u003e\u003cb\u003eFeeling:\u003c/b\u003e passion\u003cbr\u003e\u003cb\u003eCategory:\u003c/b\u003e motivation"}, {"borderWidth": 2, "borderWidthSelected": 3, "chosen": true, "color": "#e74c3c", "font": {"color": "#000000"}, "id": "emotion_60d87e0048230d83", "label": "\u5f88\u559c\u6b22", "shape": "triangle", "size": 20, "title": "\u003cb\u003eID:\u003c/b\u003e emotion_60d87e0048230d83\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e EMOTION\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u5f88\u559c\u6b22\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_ec56ebc5\u003cbr\u003e\u003cb\u003eFeeling:\u003c/b\u003e affection"}, {"borderWidth": 2, "borderWidthSelected": 3, "chosen": true, "color": "#e74c3c", "font": {"color": "#000000"}, "id": "emotion_eddb00185ded9f16", "label": "\u8010\u5fc3\u5730", "shape": "triangle", "size": 20, "title": "\u003cb\u003eID:\u003c/b\u003e emotion_eddb00185ded9f16\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e EMOTION\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u8010\u5fc3\u5730\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_ec56ebc5\u003cbr\u003e\u003cb\u003eFeeling:\u003c/b\u003e patience"}]);
+                  edges = new vis.DataSet([{"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#bdc3c7", "from": "character_e211f12d5271feee", "label": "INFLUENCES", "title": "\u003cb\u003eType:\u003c/b\u003e INFLUENCES\u003cbr\u003e\u003cb\u003eTrigger:\u003c/b\u003e \u5e2e\u52a9\u003cbr\u003e\u003cb\u003eFrom:\u003c/b\u003e \u738b\u8001\u5e08 (character)\u003cbr\u003e\u003cb\u003eTo:\u003c/b\u003e \u5c0f\u534e (character)\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_ec56ebc5", "to": "character_11a9fbcd06dc47b5", "width": 1}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#bdc3c7", "from": "character_e211f12d5271feee", "label": "INFLUENCES", "title": "\u003cb\u003eType:\u003c/b\u003e INFLUENCES\u003cbr\u003e\u003cb\u003eTrigger:\u003c/b\u003e \u5e2e\u52a9\u003cbr\u003e\u003cb\u003eFrom:\u003c/b\u003e \u738b\u8001\u5e08 (character)\u003cbr\u003e\u003cb\u003eTo:\u003c/b\u003e \u5c0f\u534e (character)\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_ec56ebc5", "to": "character_11a9fbcd06dc47b5", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"physics": {"enabled": true, "stabilization": {"iterations": 100}, "barnesHut": {"gravitationalConstant": -8000, "centralGravity": 0.3, "springLength": 95, "springConstant": 0.04, "damping": 0.09}}, "interaction": {"hover": true, "hoverConnectedEdges": true, "selectConnectedEdges": false}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

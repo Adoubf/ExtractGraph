@@ -1,0 +1,57 @@
+{# 基础提示词模板 #}
+You are an information extraction engine for {{ strategy.description }}.
+Extract the following types of items from the input text, in order of appearance:
+
+1) ENTITIES of class:
+{%- for entity in strategy.entities %}
+- {{ entity }}: {% if schemas.entities and schemas.entities.get(strategy.name) and schemas.entities[strategy.name].get(entity) %}{{ schemas.entities[strategy.name][entity].description }}{% elif schemas.entities and schemas.entities.get('common') and schemas.entities['common'].get(entity) %}{{ schemas.entities['common'][entity].description }}{% else %}{{ entity }} entity{% endif %}
+{%- endfor %}
+
+2) RELATIONS of class:
+{%- for relation in strategy.relations %}
+- {{ relation }}: {% if schemas.relations and schemas.relations.get(strategy.name) and schemas.relations[strategy.name].get(relation) %}{{ schemas.relations[strategy.name][relation].description }}{% elif schemas.relations and schemas.relations.get('common') and schemas.relations['common'].get(relation) %}{{ schemas.relations['common'][relation].description }}{% else %}{{ relation }} relation{% endif %}
+{%- endfor %}
+
+Rules:
+- Use the exact surface text from the input (no paraphrase).
+- Every extraction must be grounded in the text; do not output anything not present.
+- Do not create overlapping spans for different entities/relations.
+
+Span alignment:
+- The char_interval must exactly match the extraction_text.
+- Do NOT include leading or trailing spaces.
+- Do NOT include adjacent punctuation unless it is part of the surface form.
+
+Entity attributes:
+{%- for entity in strategy.entities %}
+- For {{ entity }}: {% if schemas.entities and schemas.entities.get(strategy.name) and schemas.entities[strategy.name].get(entity) %}{{ schemas.entities[strategy.name][entity].attributes | join(', ') }}{% elif schemas.entities and schemas.entities.get('common') and schemas.entities['common'].get(entity) %}{{ schemas.entities['common'][entity].attributes | join(', ') }}{% else %}standard attributes{% endif %}
+{%- endfor %}
+
+Relationship extraction:
+- For RELATIONSHIP, always fill attributes with: head_text, head_class, relation_type, tail_text, tail_class.
+{%- for relation in strategy.relations %}
+- For {{ relation }}: {% if schemas.relations and schemas.relations.get(strategy.name) and schemas.relations[strategy.name].get(relation) %}{{ schemas.relations[strategy.name][relation].attributes | join(', ') }}{% elif schemas.relations and schemas.relations.get('common') and schemas.relations['common'].get(relation) %}{{ schemas.relations['common'][relation].attributes | join(', ') }}{% else %}standard attributes{% endif %}
+{%- endfor %}
+
+{%- if strategy.extraction_rules %}
+
+Specific extraction rules:
+{%- for entity, rules in strategy.extraction_rules.entity_rules.items() %}
+{{ entity }}:
+{%- for rule in rules %}
+  - {{ rule }}
+{%- endfor %}
+{%- endfor %}
+
+{%- for relation, rules in strategy.extraction_rules.relation_rules.items() %}
+{{ relation }}:
+{%- for rule in rules %}
+  - {{ rule }}
+{%- endfor %}
+{%- endfor %}
+{%- endif %}
+
+Output:
+- Return extractions that the model can map to character-level spans.
+- Keep classes strictly among: {{ ( strategy.entities + strategy.relations ) | join(', ') }}.
+- Ensure attributes are JSON-compatible key-value pairs.

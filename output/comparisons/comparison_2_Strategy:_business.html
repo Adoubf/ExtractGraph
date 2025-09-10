@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1>Comparison 2: Strategy: business</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1>Comparison 2: Strategy: business</h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "person_585444e2606da9c2", "label": "\u738b\u8001\u5e08", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e person_585444e2606da9c2\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e PERSON\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u738b\u8001\u5e08\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd\u003cbr\u003e\u003cb\u003eRole:\u003c/b\u003e teacher"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "organization_cd8605f62515f0d1", "label": "\u5b66\u6821", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e organization_cd8605f62515f0d1\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e ORGANIZATION\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u5b66\u6821\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd\u003cbr\u003e\u003cb\u003eType:\u003c/b\u003e educational institution\u003cbr\u003e\u003cb\u003eSector:\u003c/b\u003e education"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "person_e8403555731c5ed1", "label": "\u5c0f\u534e", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e person_e8403555731c5ed1\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e PERSON\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u5c0f\u534e\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd\u003cbr\u003e\u003cb\u003eRole:\u003c/b\u003e student"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "attributes_be7f2c3a3b017776", "label": "{\u0027position\u0027: \u0027\u8001\u5e08\u0027, \u0027...", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e attributes_be7f2c3a3b017776\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e ATTRIBUTES\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e {\u0027position\u0027: \u0027\u8001\u5e08\u0027, \u0027role\u0027: \u0027\u6559\u80b2\u8005\u0027, \u0027department\u0027: \u0027\u5b66\u6821\u0027}\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "person_6a02e1eaec71ea7e", "label": "\u5b66\u751f\u4eec", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e person_6a02e1eaec71ea7e\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e PERSON\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u5b66\u751f\u4eec\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "attributes_90b1a81bb776fc29", "label": "{\u0027role\u0027: \u0027\u5b66\u751f\u7fa4\u4f53\u0027}", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e attributes_90b1a81bb776fc29\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e ATTRIBUTES\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e {\u0027role\u0027: \u0027\u5b66\u751f\u7fa4\u4f53\u0027}\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "works_for_f6e5d22fff3dde2d", "label": "\u662f", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e works_for_f6e5d22fff3dde2d\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e WORKS_FOR\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u662f\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "attributes_8f7a1de1b815a9f7", "label": "{\u0027head_text\u0027: \u0027\u738b\u8001\u5e08\u0027,...", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e attributes_8f7a1de1b815a9f7\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e ATTRIBUTES\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e {\u0027head_text\u0027: \u0027\u738b\u8001\u5e08\u0027, \u0027head_class\u0027: \u0027person\u0027, \u0027relation_type\u0027: \u0027works_for\u0027, \u0027tail_text\u0027: \u0027\u5b66\u6821\u0027, \u0027tail_class\u0027: \u0027organization\u0027}\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "attributes_ee66632c1bbdddfc", "label": "{\u0027role\u0027: \u0027\u5b66\u751f\u0027}", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e attributes_ee66632c1bbdddfc\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e ATTRIBUTES\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e {\u0027role\u0027: \u0027\u5b66\u751f\u0027}\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "attributes_3f43f41a2dd7f3bb", "label": "{\u0027head_text\u0027: \u0027\u5c0f\u534e\u0027, ...", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e attributes_3f43f41a2dd7f3bb\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e ATTRIBUTES\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e {\u0027head_text\u0027: \u0027\u5c0f\u534e\u0027, \u0027head_class\u0027: \u0027person\u0027, \u0027relation_type\u0027: \u0027works_for\u0027, \u0027tail_text\u0027: \u0027\u738b\u8001\u5e08\u73ed\u0027, \u0027tail_class\u0027: \u0027organization\u0027}\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "communicates_with_9852d3eadd577b27", "label": "\u9047\u5230", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e communicates_with_9852d3eadd577b27\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e COMMUNICATES_WITH\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u9047\u5230\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "attributes_a3f79d21acaf10e5", "label": "{\u0027head_text\u0027: \u0027\u5c0f\u534e\u0027, ...", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e attributes_a3f79d21acaf10e5\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e ATTRIBUTES\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e {\u0027head_text\u0027: \u0027\u5c0f\u534e\u0027, \u0027head_class\u0027: \u0027person\u0027, \u0027relation_type\u0027: \u0027meets\u0027, \u0027tail_text\u0027: \u0027\u5b66\u4e60\u56f0\u96be\u0027, \u0027tail_class\u0027: \u0027financial\u0027}\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "communicates_with_2e3623ef7cde62d6", "label": "\u5e2e\u52a9", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e communicates_with_2e3623ef7cde62d6\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e COMMUNICATES_WITH\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e \u5e2e\u52a9\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd"}, {"borderWidth": 1, "borderWidthSelected": 2, "chosen": true, "color": "#95a5a6", "font": {"color": "#000000"}, "id": "attributes_9d5b1b47c09701e1", "label": "{\u0027head_text\u0027: \u0027\u738b\u8001\u5e08\u0027,...", "shape": "dot", "size": 15, "title": "\u003cb\u003eID:\u003c/b\u003e attributes_9d5b1b47c09701e1\u003cbr\u003e\u003cb\u003eLabel:\u003c/b\u003e ATTRIBUTES\u003cbr\u003e\u003cb\u003eText:\u003c/b\u003e {\u0027head_text\u0027: \u0027\u738b\u8001\u5e08\u0027, \u0027head_class\u0027: \u0027person\u0027, \u0027relation_type\u0027: \u0027communicates_with\u0027, \u0027tail_text\u0027: \u0027\u5c0f\u534e\u0027, \u0027tail_class\u0027: \u0027person\u0027, \u0027method\u0027: \u0027\u6559\u5b66\u8f85\u5bfc\u0027, \u0027content\u0027: \u0027\u5b66\u4e60\u95ee\u9898\u0027}\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd"}]);
+                  edges = new vis.DataSet([{"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#bdc3c7", "from": "person_e8403555731c5ed1", "label": "WORKS_FOR", "title": "\u003cb\u003eType:\u003c/b\u003e WORKS_FOR\u003cbr\u003e\u003cb\u003eTrigger:\u003c/b\u003e is\u003cbr\u003e\u003cb\u003eFrom:\u003c/b\u003e \u5c0f\u534e (person)\u003cbr\u003e\u003cb\u003eTo:\u003c/b\u003e \u738b\u8001\u5e08 (person)\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd", "to": "person_585444e2606da9c2", "width": 1}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#bdc3c7", "from": "person_e8403555731c5ed1", "label": "MEETS", "title": "\u003cb\u003eType:\u003c/b\u003e MEETS\u003cbr\u003e\u003cb\u003eTrigger:\u003c/b\u003e \u9047\u5230\u5b66\u4e60\u56f0\u96be\u65f6\u003cbr\u003e\u003cb\u003eFrom:\u003c/b\u003e \u5c0f\u534e (person)\u003cbr\u003e\u003cb\u003eTo:\u003c/b\u003e \u738b\u8001\u5e08 (person)\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd", "to": "person_585444e2606da9c2", "width": 1}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#bdc3c7", "from": "person_585444e2606da9c2", "label": "COMMUNICATES_WITH", "title": "\u003cb\u003eType:\u003c/b\u003e COMMUNICATES_WITH\u003cbr\u003e\u003cb\u003eTrigger:\u003c/b\u003e \u8010\u5fc3\u5730\u5e2e\u52a9\u003cbr\u003e\u003cb\u003eFrom:\u003c/b\u003e \u738b\u8001\u5e08 (person)\u003cbr\u003e\u003cb\u003eTo:\u003c/b\u003e \u5c0f\u534e (person)\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd", "to": "person_e8403555731c5ed1", "width": 1}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#bdc3c7", "from": "person_585444e2606da9c2", "label": "WORKS_FOR", "title": "\u003cb\u003eType:\u003c/b\u003e WORKS_FOR\u003cbr\u003e\u003cb\u003eTrigger:\u003c/b\u003e is\u003cbr\u003e\u003cb\u003eFrom:\u003c/b\u003e \u738b\u8001\u5e08 (person)\u003cbr\u003e\u003cb\u003eTo:\u003c/b\u003e \u5b66\u6821 (organization)\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd", "to": "organization_cd8605f62515f0d1", "width": 1}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#bdc3c7", "from": "person_585444e2606da9c2", "label": "COMMUNICATES_WITH", "title": "\u003cb\u003eType:\u003c/b\u003e COMMUNICATES_WITH\u003cbr\u003e\u003cb\u003eTrigger:\u003c/b\u003e helps\u003cbr\u003e\u003cb\u003eFrom:\u003c/b\u003e \u738b\u8001\u5e08 (person)\u003cbr\u003e\u003cb\u003eTo:\u003c/b\u003e \u5c0f\u534e (person)\u003cbr\u003e\u003cb\u003eDocument:\u003c/b\u003e doc_e6271ffd", "to": "person_e8403555731c5ed1", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"physics": {"enabled": true, "stabilization": {"iterations": 100}, "barnesHut": {"gravitationalConstant": -8000, "centralGravity": 0.3, "springLength": 95, "springConstant": 0.04, "damping": 0.09}}, "interaction": {"hover": true, "hoverConnectedEdges": true, "selectConnectedEdges": false}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

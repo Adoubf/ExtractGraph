@@ -1,0 +1,92 @@
+# 商业文档提取策略配置
+name: "business"
+description: "专门用于商业文档的信息提取配置"
+version: "1.0"
+
+# 支持的实体类型
+entities:
+  - organization
+  - person
+  - product
+  - financial
+  - location
+
+# 支持的关系类型
+relations:
+  - works_for
+  - partners_with
+  - produces
+  - invests_in
+  - appears_at
+  - meets
+  - communicates_with
+
+# 精细度配置
+granularity:
+  breadth: "comprehensive"     # 商业文档需要全面提取
+  depth: "semantic"           # 语义层面分析
+  confidence: "high"          # 高置信度结果
+  context_scope: "document"   # 文档级别上下文
+
+# 提取规则
+extraction_rules:
+  entity_rules:
+    organization:
+      - "提取公司名称、机构名称"
+      - "识别缩写和全称形式"
+      - "包含部门和分支机构"
+    
+    person:
+      - "提取人员姓名和职位"
+      - "识别高管和关键人物"
+      - "包含联系人信息相关的人员"
+    
+    product:
+      - "提取产品和服务名称"
+      - "识别品牌和型号信息"
+      - "包含产品特性描述"
+    
+    financial:
+      - "提取财务数据和指标"
+      - "识别金额、比率、百分比"
+      - "包含预算和预测信息"
+  
+  relation_rules:
+    works_for:
+      - "识别雇佣关系和职位关系"
+      - "包含组织架构信息"
+    
+    partners_with:
+      - "识别合作关系和联盟"
+      - "包含战略联盟和合资企业"
+    
+    produces:
+      - "识别生产和制造关系"
+      - "包含服务提供关系"
+    
+    invests_in:
+      - "识别投资和收购关系"
+      - "包含股权和资本流动"
+
+# 提示词模板配置
+prompt_template: "base"
+
+# Few-shot示例配置
+examples:
+  use_domain_specific: true
+  max_examples: 3
+  example_selection: "relevant"
+
+# 后处理配置
+post_processing:
+  merge_similar_entities: true
+  resolve_coreferences: true
+  filter_low_confidence: true
+  normalize_financial_data: true
+
+# 特殊配置
+special_settings:
+  recognize_business_terms: true
+  handle_financial_formats: true
+  extract_contact_info: false
+  preserve_legal_language: true

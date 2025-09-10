@@ -1,0 +1,89 @@
+# 新闻文本提取策略配置
+name: "news"
+description: "专门用于新闻文本的信息提取配置"
+version: "1.0"
+
+# 支持的实体类型
+entities:
+  - person
+  - organization
+  - event
+  - location
+
+# 支持的关系类型
+relations:
+  - participates_in
+  - causes
+  - reports_on
+  - affects
+  - appears_at
+
+# 精细度配置
+granularity:
+  breadth: "comprehensive"     # 新闻需要全面提取
+  depth: "semantic"           # 语义层面分析
+  confidence: "high"          # 高置信度结果
+  context_scope: "paragraph"  # 段落级别上下文
+
+# 提取规则
+extraction_rules:
+  entity_rules:
+    person:
+      - "提取新闻中的人物姓名"
+      - "识别官员、专家、当事人等"
+      - "包含职务和身份信息"
+    
+    organization:
+      - "提取机构、公司、政府部门名称"
+      - "识别缩写和全称"
+      - "包含国际组织和NGO"
+    
+    event:
+      - "提取重要事件和新闻事实"
+      - "识别会议、事故、政策等"
+      - "包含时间和地点信息"
+    
+    location:
+      - "提取地理位置信息"
+      - "识别国家、城市、地区"
+      - "包含具体地址和场所"
+  
+  relation_rules:
+    participates_in:
+      - "识别人物和组织参与事件的关系"
+      - "包含角色和参与程度"
+    
+    causes:
+      - "识别因果关系"
+      - "包含直接和间接原因"
+    
+    reports_on:
+      - "识别报道关系"
+      - "包含信息来源"
+    
+    affects:
+      - "识别影响关系"
+      - "包含影响范围和程度"
+
+# 提示词模板配置
+prompt_template: "base"
+
+# Few-shot示例配置
+examples:
+  use_domain_specific: true
+  max_examples: 3
+  example_selection: "relevant"
+
+# 后处理配置
+post_processing:
+  merge_similar_entities: true
+  resolve_coreferences: true
+  filter_low_confidence: true
+  normalize_locations: true
+
+# 特殊配置
+special_settings:
+  recognize_news_terms: true
+  handle_quotes: true
+  extract_time_info: true
+  preserve_factual_accuracy: true

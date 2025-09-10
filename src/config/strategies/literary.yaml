@@ -1,0 +1,89 @@
+# 文学文本提取策略配置
+name: "literary"
+description: "专门用于文学文本的信息提取配置"
+version: "1.0"
+
+# 支持的实体类型
+entities:
+  - character
+  - emotion  
+  - theme
+  - symbol
+  - location
+
+# 支持的关系类型
+relations:
+  - appears_at
+  - meets
+  - addresses
+  - symbolizes
+  - influences
+  - represents
+  - conflicts_with
+  - communicates_with
+
+# 精细度配置
+granularity:
+  breadth: "standard"      # minimal, standard, comprehensive
+  depth: "semantic"        # surface, semantic, inferential
+  confidence: "medium"     # high, medium, all
+  context_scope: "paragraph"  # local, paragraph, document
+
+# 提取规则
+extraction_rules:
+  # 实体提取规则
+  entity_rules:
+    character:
+      - "提取明确出现的人物名称，包括说话者标识"
+      - "保留原文中的确切文本形式，包括称谓和头衔"
+      - "识别代词引用的人物"
+    
+    emotion:
+      - "提取情感表达词汇和短语"
+      - "识别感叹句和情感色彩强烈的表述"
+      - "包含隐含的情感线索"
+    
+    theme:
+      - "识别文学主题和概念"
+      - "提取象征性表达"
+      - "包含隐喻和比喻中的主题元素"
+    
+    symbol:
+      - "识别具有象征意义的物体、现象和概念"
+      - "提取比喻和隐喻中的象征元素"
+  
+  # 关系提取规则
+  relation_rules:
+    appears_at:
+      - "识别人物出现的地点描述"
+      - "包含空间关系的动词短语"
+    
+    addresses:
+      - "识别对话和称呼关系"
+      - "包含直接引语和间接引语"
+    
+    symbolizes:
+      - "识别象征关系，特别是比喻句中的象征"
+      - "提取'是'、'如同'等象征性连接词"
+
+# 提示词模板配置
+prompt_template: "detailed"  # base, detailed, minimal
+
+# Few-shot示例配置
+examples:
+  use_domain_specific: true
+  max_examples: 5
+  example_selection: "diverse"  # diverse, relevant, recent
+
+# 后处理配置
+post_processing:
+  merge_similar_entities: true
+  resolve_coreferences: true
+  filter_low_confidence: false
+  
+# 特殊配置
+special_settings:
+  preserve_literary_language: true
+  handle_archaic_forms: true
+  recognize_poetic_devices: true
+  extract_dialogue_structure: true

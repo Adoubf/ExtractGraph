@@ -1,0 +1,190 @@
+# 关系类型定义配置
+# 支持不同领域的关系类型和属性定义
+
+# 通用关系类型
+common:
+  appears_at:
+    description: "出现在某地"
+    head_types: ["character", "person"]
+    tail_types: ["location"]
+    attributes:
+      - context       # 上下文
+      - time          # 时间
+  
+  meets:
+    description: "会面或相遇"
+    head_types: ["character", "person"]
+    tail_types: ["character", "person"]
+    attributes:
+      - context       # 会面背景
+      - purpose       # 目的
+  
+  communicates_with:
+    description: "交流沟通"
+    head_types: ["character", "person"]
+    tail_types: ["character", "person"]
+    attributes:
+      - method        # 交流方式
+      - content       # 内容类型
+
+# 文学领域关系
+literary:
+  symbolizes:
+    description: "象征关系"
+    head_types: ["character", "symbol"]
+    tail_types: ["theme", "concept", "emotion"]
+    attributes:
+      - symbolic_meaning  # 象征意义
+      - literary_device   # 文学手法
+  
+  addresses:
+    description: "称呼或对话"
+    head_types: ["character"]
+    tail_types: ["character"]
+    attributes:
+      - tone          # 语调
+      - formality     # 正式程度
+      - emotion       # 情感色彩
+  
+  influences:
+    description: "影响关系"
+    head_types: ["character", "event"]
+    tail_types: ["character", "emotion", "theme"]
+    attributes:
+      - influence_type    # 影响类型
+      - degree           # 程度
+      - outcome          # 结果
+  
+  represents:
+    description: "代表或体现"
+    head_types: ["character", "symbol"]
+    tail_types: ["theme", "concept"]
+    attributes:
+      - representation_type  # 代表类型
+      - significance        # 重要性
+  
+  conflicts_with:
+    description: "冲突关系"
+    head_types: ["character"]
+    tail_types: ["character", "theme"]
+    attributes:
+      - conflict_type     # 冲突类型
+      - intensity        # 强度
+      - resolution       # 解决方式
+
+# 商业领域关系
+business:
+  works_for:
+    description: "工作关系"
+    head_types: ["person"]
+    tail_types: ["organization"]
+    attributes:
+      - position      # 职位
+      - duration      # 任职时间
+      - department    # 部门
+  
+  partners_with:
+    description: "合作关系"
+    head_types: ["organization"]
+    tail_types: ["organization"]
+    attributes:
+      - partnership_type  # 合作类型
+      - duration         # 合作期限
+      - scope           # 合作范围
+  
+  produces:
+    description: "生产关系"
+    head_types: ["organization"]
+    tail_types: ["product"]
+    attributes:
+      - production_type   # 生产类型
+      - volume           # 产量
+      - quality          # 质量
+  
+  invests_in:
+    description: "投资关系"
+    head_types: ["organization", "person"]
+    tail_types: ["organization", "product"]
+    attributes:
+      - investment_amount # 投资金额
+      - investment_type   # 投资类型
+      - expected_return   # 预期回报
+
+# 新闻领域关系
+news:
+  participates_in:
+    description: "参与事件"
+    head_types: ["person", "organization"]
+    tail_types: ["event"]
+    attributes:
+      - participation_role  # 参与角色
+      - involvement_level   # 参与程度
+  
+  causes:
+    description: "因果关系"
+    head_types: ["event", "person", "organization"]
+    tail_types: ["event", "outcome"]
+    attributes:
+      - causation_type    # 因果类型
+      - evidence_level    # 证据强度
+  
+  reports_on:
+    description: "报道关系"
+    head_types: ["organization", "person"]
+    tail_types: ["event", "person"]
+    attributes:
+      - reporting_angle   # 报道角度
+      - bias_level       # 偏向程度
+  
+  affects:
+    description: "影响关系"
+    head_types: ["event", "policy"]
+    tail_types: ["person", "organization", "location"]
+    attributes:
+      - impact_type      # 影响类型
+      - severity         # 严重程度
+      - duration         # 持续时间
+
+# 学术领域关系
+academic:
+  researches:
+    description: "研究关系"
+    head_types: ["researcher"]
+    tail_types: ["concept", "methodology"]
+    attributes:
+      - research_type     # 研究类型
+      - methodology      # 研究方法
+      - duration         # 研究时长
+  
+  builds_on:
+    description: "基于或扩展"
+    head_types: ["finding", "concept"]
+    tail_types: ["finding", "concept"]
+    attributes:
+      - relationship_type # 关系类型
+      - contribution     # 贡献程度
+  
+  validates:
+    description: "验证关系"
+    head_types: ["finding", "methodology"]
+    tail_types: ["concept", "hypothesis"]
+    attributes:
+      - validation_method # 验证方法
+      - confidence_level  # 置信度
+  
+  contradicts:
+    description: "矛盾关系"
+    head_types: ["finding"]
+    tail_types: ["finding", "concept"]
+    attributes:
+      - contradiction_type # 矛盾类型
+      - evidence_strength  # 证据强度
+  
+  collaborates_with:
+    description: "合作关系"
+    head_types: ["researcher"]
+    tail_types: ["researcher"]
+    attributes:
+      - collaboration_type # 合作类型
+      - project_scope     # 项目范围
+      - duration          # 合作时长
