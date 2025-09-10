@@ -358,6 +358,6 @@ python -m code_examples.visual_nodes_demo
 
 **⭐ 如果这个仓库对你有帮助，请给它一个星标！**
 
-用 ❤️ 制作，作者：[Your Name](https://github.com/Adoubf)
+用 ❤️ 制作，作者：[Haoyue](https://github.com/Adoubf)
 
 </div>
