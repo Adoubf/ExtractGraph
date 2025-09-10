@@ -252,6 +252,64 @@ result = extractor.extract(
 
 ---
 
+## 🎨 Visualization Gallery
+
+### Basic Text Extraction
+Interactive visualization of entities and relationships extracted from text.
+
+![Basic Text Extraction](images/Text%20Extraction%20Visualization%20-%20default.png)
+
+### Literary Strategy Analysis
+Specialized extraction for literary texts with character and emotion analysis.
+
+![Literary Strategy](images/Text%20Extraction%20Visualization%20-%20literary.png)
+
+### Business Data Visualization
+Structured data ready for Neo4j import with organizational relationships.
+
+![Business Data](images/Business%20Text%20Extraction.png)
+
+### Strategy Comparison
+Compare different extraction strategies side by side.
+
+<div align="center">
+<table>
+<tr>
+<td align="center">
+<b>Literary Strategy</b><br>
+<img src="images/Comparison%201-Strategy-literary.png" width="400">
+</td>
+<td align="center">
+<b>Business Strategy</b><br>
+<img src="images/Comparison%202-Strategy-business.png" width="400">
+</td>
+</tr>
+</table>
+</div>
+
+### ✨ Interactive Features
+
+All visualizations support:
+- 🖱️ **Drag nodes** - Adjust graph layout
+- 🔍 **Hover details** - View detailed information
+- 🎯 **Click highlighting** - Highlight connected nodes
+- 📐 **Zoom & pan** - Explore large graphs
+- ⚙️ **Physics layout** - Auto-optimize positioning
+
+### 🔗 Try It Yourself
+
+Experience the full interactive features:
+
+```bash
+git clone https://github.com/Adoubf/extractGraph.git
+cd extractGraph
+uv sync
+python -m code_examples.visual_nodes_demo
+# Open the generated HTML files in your browser!
+```
+
+---
+
 ## 🛠️ Advanced Usage
 
 ### Custom Strategy Development

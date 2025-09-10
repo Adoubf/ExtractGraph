@@ -252,6 +252,64 @@ result = extractor.extract(
 
 ---
 
+## 🎨 可视化效果展示
+
+### 基础文本提取
+展示从文本中提取的实体和关系的交互式图表。
+
+![基础文本提取](images/Text%20Extraction%20Visualization%20-%20default.png)
+
+### 文学策略分析
+专门针对文学文本的提取，包含人物和情感分析。
+
+![文学策略](images/Text%20Extraction%20Visualization%20-%20literary.png)
+
+### 商业数据可视化
+结构化数据，准备导入 Neo4j，包含组织关系。
+
+![商业数据](images/Business%20Text%20Extraction.png)
+
+### 策略对比分析
+并排比较不同提取策略的效果。
+
+<div align="center">
+<table>
+<tr>
+<td align="center">
+<b>文学策略</b><br>
+<img src="images/Comparison%201-Strategy-literary.png" width="400">
+</td>
+<td align="center">
+<b>商业策略</b><br>
+<img src="images/Comparison%202-Strategy-business.png" width="400">
+</td>
+</tr>
+</table>
+</div>
+
+### ✨ 交互功能
+
+所有可视化都支持：
+- 🖱️ **拖拽节点** - 调整图表布局
+- 🔍 **悬停详情** - 查看详细信息
+- 🎯 **点击高亮** - 高亮相关连接
+- 📐 **缩放平移** - 探索大型图表
+- ⚙️ **物理布局** - 自动优化位置
+
+### 🔗 亲自体验
+
+体验完整的交互功能：
+
+```bash
+git clone https://github.com/Adoubf/extractGraph.git
+cd extractGraph
+uv sync
+python -m code_examples.visual_nodes_demo
+# 在浏览器中打开生成的 HTML 文件！
+```
+
+---
+
 ## 🛠️ 高级用法
 
 ### 自定义策略开发
