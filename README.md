@@ -1,4 +1,4 @@
-# 🕸️ extractGraph
+# 🕸️ ExtractGraph
 
 <div align="center">
 
