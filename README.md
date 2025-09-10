@@ -58,7 +58,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/Adoubf/extractGraph.git
+git clone https://github.com/Adoubf/ExtractGraph.git
 cd extractGraph
 
 # Install with uv (recommended)
@@ -317,7 +317,7 @@ We welcome contributions! Here's how to get started:
 
 ```bash
 # Clone and setup development environment
-git clone https://github.com/Adoubf/extractGraph.git
+git clone https://github.com/Adoubf/ExtractGraph.git
 cd extractGraph
 uv sync --dev
 

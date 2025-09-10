@@ -58,7 +58,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/Adoubf/extractGraph.git
+git clone https://github.com/Adoubf/ExtractGraph.git
 cd extractGraph
 
 # 使用 uv 安装（推荐）
@@ -317,7 +317,7 @@ visual_nodes.edge_styles.update({
 
 ```bash
 # 克隆并设置开发环境
-git clone https://github.com/Adoubf/extractGraph.git
+git clone https://github.com/Adoubf/ExtractGraph.git
 cd extractGraph
 uv sync --dev
 
