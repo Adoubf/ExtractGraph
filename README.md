@@ -2,14 +2,16 @@
 
 <div align="center">
 
+**English | [中文](README_zh.md)**
+
 [![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Built with Love](https://img.shields.io/badge/Built%20with-❤️-red.svg)](https://github.com/yourusername/extractGraph)
+[![Built with Love](https://img.shields.io/badge/Built%20with-❤️-red.svg)](https://github.com/Adoubf/extractGraph)
 
 **A powerful, configurable text extraction system for building knowledge graphs**
 
-*Built on top of [langextract](https://github.com/aurelio-labs/langextract) with advanced configuration management and visualization capabilities*
+*Built on top of [langextract](https://github.com/google/langextract) with advanced configuration management and visualization capabilities*
 
 [🚀 Quick Start](#quick-start) • [📖 Documentation](#documentation) • [🎯 Examples](#examples) • [🤝 Contributing](#contributing)
 
@@ -56,7 +58,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/extractGraph.git
+git clone https://github.com/Adoubf/extractGraph.git
 cd extractGraph
 
 # Install with uv (recommended)
@@ -315,7 +317,7 @@ We welcome contributions! Here's how to get started:
 
 ```bash
 # Clone and setup development environment
-git clone https://github.com/yourusername/extractGraph.git
+git clone https://github.com/Adoubf/extractGraph.git
 cd extractGraph
 uv sync --dev
 
@@ -346,10 +348,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 📖 **Documentation:** [Full documentation](docs/)
-- 🐛 **Issues:** [GitHub Issues](https://github.com/yourusername/extractGraph/issues)
-- 💬 **Discussions:** [GitHub Discussions](https://github.com/yourusername/extractGraph/discussions)
-- 📧 **Email:** your.email@example.com
+- 🐛 **Issues:** [GitHub Issues](https://github.com/Adoubf/extractGraph/issues)
+- 💬 **Discussions:** [GitHub Discussions](https://github.com/Adoubf/extractGraph/discussions)
+- 📧 **Email:** haoyue@coralera.org
 
 ---
 
@@ -357,6 +358,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **⭐ Star this repository if you find it helpful!**
 
-Made with ❤️ by [Your Name](https://github.com/yourusername)
+Made with ❤️ by [Your Name](https://github.com/Adoubf)
 
 </div>
