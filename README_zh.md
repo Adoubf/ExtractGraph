@@ -7,7 +7,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Built with Love](https://img.shields.io/badge/Built%20with-❤️-red.svg)](https://github.com/Adoubf/extractGraph)
+[![Built with Love](https://img.shields.io/badge/Built%20with-❤️-red.svg)](https://github.com/Adoubf/ExtractGraph)
 
 **强大的、可配置的文本提取系统，用于构建知识图谱**
 
@@ -59,7 +59,7 @@
 ```bash
 # 克隆仓库
 git clone https://github.com/Adoubf/ExtractGraph.git
-cd extractGraph
+cd ExtractGraph
 
 # 使用 uv 安装（推荐）
 uv sync
@@ -105,7 +105,7 @@ html_path = visual_nodes.visualize_text_extraction(
 ## 🏗️ 架构
 
 ```
-extractGraph/
+ExtractGraph/
 ├── 🎛️ 策略层          # 基于 YAML 的提取策略
 ├── 🔧 配置层          # 使用 Jinja2 的动态提示词生成  
 ├── 📊 粒度层          # 多维度提取控制
@@ -318,7 +318,7 @@ visual_nodes.edge_styles.update({
 ```bash
 # 克隆并设置开发环境
 git clone https://github.com/Adoubf/ExtractGraph.git
-cd extractGraph
+cd ExtractGraph
 uv sync --dev
 
 # 运行测试
@@ -348,8 +348,8 @@ python -m code_examples.visual_nodes_demo
 
 ## 📞 支持
 
-- 🐛 **问题反馈：** [GitHub Issues](https://github.com/Adoubf/extractGraph/issues)
-- 💬 **讨论：** [GitHub Discussions](https://github.com/Adoubf/extractGraph/discussions)
+- 🐛 **问题反馈：** [GitHub Issues](https://github.com/Adoubf/ExtractGraph/issues)
+- 💬 **讨论：** [GitHub Discussions](https://github.com/Adoubf/ExtractGraph/discussions)
 - 📧 **邮箱：** haoyue@coralera.org
 
 ---

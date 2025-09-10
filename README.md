@@ -7,7 +7,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Built with Love](https://img.shields.io/badge/Built%20with-❤️-red.svg)](https://github.com/Adoubf/extractGraph)
+[![Built with Love](https://img.shields.io/badge/Built%20with-❤️-red.svg)](https://github.com/Adoubf/ExtractGraph)
 
 **A powerful, configurable text extraction system for building knowledge graphs**
 
@@ -59,7 +59,7 @@
 ```bash
 # Clone the repository
 git clone https://github.com/Adoubf/ExtractGraph.git
-cd extractGraph
+cd ExtractGraph
 
 # Install with uv (recommended)
 uv sync
@@ -105,7 +105,7 @@ html_path = visual_nodes.visualize_text_extraction(
 ## 🏗️ Architecture
 
 ```
-extractGraph/
+ExtractGraph/
 ├── 🎛️ Strategy Layer      # YAML-based extraction strategies
 ├── 🔧 Configuration Layer # Dynamic prompt generation with Jinja2  
 ├── 📊 Granularity Layer   # Multi-dimensional extraction control
@@ -318,7 +318,7 @@ We welcome contributions! Here's how to get started:
 ```bash
 # Clone and setup development environment
 git clone https://github.com/Adoubf/ExtractGraph.git
-cd extractGraph
+cd ExtractGraph
 uv sync --dev
 
 # Run tests
@@ -348,8 +348,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 🐛 **Issues:** [GitHub Issues](https://github.com/Adoubf/extractGraph/issues)
-- 💬 **Discussions:** [GitHub Discussions](https://github.com/Adoubf/extractGraph/discussions)
+- 🐛 **Issues:** [GitHub Issues](https://github.com/Adoubf/ExtractGraph/issues)
+- 💬 **Discussions:** [GitHub Discussions](https://github.com/Adoubf/ExtractGraph/discussions)
 - 📧 **Email:** haoyue@coralera.org
 
 ---
